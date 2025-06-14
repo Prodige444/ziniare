@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Réservation d'Hôtel à ZINIARE</title>
+    <link rel="stylesheet" href="formulaire.css">
+</head>
+<body>
+
+<main>
+    <h2>Formulaire de réservation d'hôtel</h2>
+
+    <form onsubmit="afficherConfirmation(event)">
+        <fieldset>
+            <legend>Identification</legend>
+            <label for="nom">Nom :</label>
+            <input type="text" name="nom" id="nom" required><br>
+
+            <label for="prenom">Prénom :</label>
+            <input type="text" name="prenom" id="prenom" required><br>
+
+            <label for="telephone">Téléphone :</label>
+            <input type="tel" name="telephone" id="telephone" required><br>
+
+            <label for="email">Email :</label>
+            <input type="email" name="email" id="email" required><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Dates d'arrivée et de départ</legend>
+            <label for="arrivee">Date d'arrivée :</label>
+            <input type="date" name="arrivee" id="arrivee" required><br>
+
+            <label for="depart">Date de départ :</label>
+            <input type="date" name="depart" id="depart" required><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Nombre de personnes</legend>
+            <label for="nb_personnes">Nombre de personnes :</label>
+            <input type="number" name="nb_personnes" id="nb_personnes" min="1" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Type de chambre</legend>
+            <label><input type="radio" name="chambre" value="vip" required> Chambre VIP</label><br>
+            <label><input type="radio" name="chambre" value="non-vip"> Chambre non VIP</label>
+        </fieldset>
+
+        <br>
+        <input type="submit" value="Réserver" class="btn">
+    </form>
+
+    <div id="confirmation" class="confirmation"></div>
+</main>
+
+<script>
+function afficherConfirmation(event) {
+    event.preventDefault(); // empêche l'envoi du formulaire
+
+    const msg = document.getElementById("confirmation");
+    msg.textContent = "Réservation confirmée ! Merci pour votre confiance.";
+    msg.classList.add("show");
+
+    setTimeout(() => {
+        msg.classList.remove("show");
+        document.querySelector("form").reset();
+    }, 4000);
+}
+</script>
+
+</body>
+</html>
